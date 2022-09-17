@@ -3,12 +3,10 @@ package com.grodastr;
 public class Converter {
     //1 января 2009 года в unix времени
     private final long beginingTime = 1230768000;
-    public long searchOmnicom(long unixTime){
+    public long searchOmnicom(long unixTime) throws Exception{
         if (unixTime<0) return -1;
         else {
             long omnicom = unixTime - beginingTime;
-            System.out.println("Время Omnicom:");
-            System.out.println(omnicom);
             return omnicom;
         }
     }
@@ -19,8 +17,6 @@ public class Converter {
         else {
             long unixTime = omnicom + beginingTime;
             if (unixTime<0) return -1;
-            System.out.println("Время Unix:");
-            System.out.println(unixTime);
             return unixTime;
         }
     }
