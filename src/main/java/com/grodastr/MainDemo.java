@@ -22,11 +22,13 @@ public class MainDemo implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (converter.searchUnix(Long.parseLong(textField.getText()))<0){
-                        response.setText("Время не может быть меньше нуля");
+                    if (converter.searchOmnicom(Long.parseLong(textField.getText()))==-1){
+                        response.setText("Время не может быть с минусом");
 
-                    }else {
-                        response.setText(String.valueOf(converter.searchUnix(Long.parseLong(textField.getText()))));
+                    } else if (converter.searchOmnicom(Long.parseLong(textField.getText()))==-2) {
+                        response.setText("Время до 2009");
+                    } else {
+                        response.setText(String.valueOf(converter.searchOmnicom(Long.parseLong(textField.getText()))));
                     }
 
                 }catch (Exception ex){
@@ -39,11 +41,11 @@ public class MainDemo implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (converter.searchOmnicom(Long.parseLong(textField.getText()))<0){
-                        response.setText("Время до 2009 года");
+                    if (converter.searchUnix(Long.parseLong(textField.getText()))==-1){
+                        response.setText("Время не может быть с минусом");
 
                     }else {
-                        response.setText(String.valueOf(converter.searchOmnicom(Long.parseLong(textField.getText()))));
+                        response.setText(String.valueOf(converter.searchUnix(Long.parseLong(textField.getText()))));
                     }
 
                 }catch (Exception ex){
