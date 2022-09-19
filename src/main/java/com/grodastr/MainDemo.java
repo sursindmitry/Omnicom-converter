@@ -23,9 +23,11 @@ public class MainDemo implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 try {
                     if (converter.searchOmnicom(Long.parseLong(textField.getText()))==-1){
-                        response.setText("Время не может быть с минусом");
+                        response.setText("Время не может быть нулевым");
 
                     } else if (converter.searchOmnicom(Long.parseLong(textField.getText()))==-2) {
+                        response.setText("Время не может быть с минусом");
+                    } else if (converter.searchOmnicom(Long.parseLong(textField.getText()))==-3) {
                         response.setText("Время до 2009");
                     } else {
                         response.setText(String.valueOf(converter.searchOmnicom(Long.parseLong(textField.getText()))));
@@ -42,9 +44,13 @@ public class MainDemo implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 try {
                     if (converter.searchUnix(Long.parseLong(textField.getText()))==-1){
+                        response.setText("Время не может быть нулевым");
+                    }
+                    else if (converter.searchUnix(Long.parseLong(textField.getText()))==-2) {
                         response.setText("Время не может быть с минусом");
+                    }
 
-                    }else {
+                    else {
                         response.setText(String.valueOf(converter.searchUnix(Long.parseLong(textField.getText()))));
                     }
 
@@ -58,10 +64,6 @@ public class MainDemo implements ActionListener {
         jpu.add(jmiCopy);
         jmiCopy.addActionListener(this);
         response.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                jpu.show(e.getComponent(),e.getX(),e.getY());
-            }
 
             @Override
             public void mouseReleased(MouseEvent e) {
